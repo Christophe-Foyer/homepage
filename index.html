@@ -284,15 +284,19 @@
 			<hr>
 		   
 			<div class="col-lg-8">
-                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#tatasteel-collapse" role="button" aria-expanded="false" aria-controls="tatasteel-collapse">Tata Steel Heat Transfer project</a>
+                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#tatasteel-collapse" 
+				 role="button" aria-expanded="false" aria-controls="tatasteel-collapse"
+				 onclick="tata_load()">
+				Tata Steel Heat Transfer project
+				</a>
 			</div>
 		   
             <div class="collapse" id="tatasteel-collapse">
 				<hr>
 				<p>Project report:</p>
 				<div id="tata_doc"></div> <!-- had to delay pdf loading otherwise instgram does weird stuff-->
-        <hr>
-        <p>Post-internship video:</p>
+				<hr>
+				<p>Post-internship video:</p>
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-RiEDUOqW_A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
@@ -348,9 +352,9 @@
   <!-- Scripts -->
   <script>
 	// Javascript
-	$(window).bind("load", function() {
+	function tata_load() {
 	  $('#tata_doc').prepend('<iframe id="tata-iframe" src="https://resume.cfoyer.com/files/documents/Tata%20Steel%20Heat%20Model%20Report%20-%20Christophe%20Foyer.pdf" style="width: 100%; height: 80vh;"></iframe>');
-	});
+	};
   </script>
 
 </body>
