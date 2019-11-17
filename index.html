@@ -29,7 +29,9 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!--<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">-->
+  <script src="https://kit.fontawesome.com/5883d7889d.js"></script>
+  
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -77,8 +79,8 @@
         <h2 class="text-white-50 mx-auto mt-2 mb-3">M.Sc. Candidate - Scientific Computing<br>University College London</h2>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">B.S. in Mechanical Engineering<br>Washington University in St. Louis</h2>
 		
-        <a href="#about" class="btn btn-primary js-scroll-trigger">About</a>
-        <a href="https://resume.cfoyer.com/" class="btn btn-primary js-scroll-trigger">Resume</a>
+        <a href="#about" class="btn btn-primary js-scroll-trigger"><i class="fas fa-caret-down"></i> About</a>
+        <a href="https://resume.cfoyer.com/" class="btn btn-primary js-scroll-trigger"><i class="fas fa-link"></i> Resume</a>
       </div>
     </div>
   </header>
@@ -109,9 +111,9 @@
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
-            <h4>Engineering Simulations</h4>
-            <p class="text-black-50 mb-0">Through my proficiency in both mechanical engineering and software, I have developed <a href="http://resume.cfoyer.com/files/documents/Tata%20Steel%20Heat%20Model%20Report%20-%20Christophe%20Foyer.pdf">custom-designed simulations</a> to model physical systems and estimate desired variables both as part of small teams, and on personal projects.</p>
-          </div>
+            <h4><a style="color: inherit;" href="#simModal" data-toggle="modal" data-target="#simModal">Engineering Simulations <sup><i class="fas fa-link" style="font-size: 12px;"></i></sup></a></h4>
+            <p class="text-black-50 mb-2">Through my proficiency in both mechanical engineering and software, I have developed custom-designed simulations to model physical systems and estimate desired variables both as part of small teams, and on personal projects.</p>
+		  </div>
         </div>
       </div>
 
@@ -203,7 +205,7 @@
     <div class="container">
 
       <div class="row">
-
+<!-- 
         <div class="col-md-4 mb-3 mb-md-0">
           <div class="card py-4 h-100">
             <div class="card-body text-center">
@@ -214,7 +216,7 @@
             </div>
           </div>
         </div>
-
+ -->
         <div class="col-md-4 mb-3 mb-md-0">
           <div class="card py-4 h-100">
             <div class="card-body text-center">
@@ -254,6 +256,78 @@
 
     </div>
   </section>
+  
+  <!-- Simulations modal -->
+  <div class="modal fade" id="simModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Engineering Simulations</h4>
+		  
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body p-3">
+			<p>Some of my engineering simulation projects:</p>
+           
+			<div class="col-lg-8">
+                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#pyfea-collapse" role="button" aria-expanded="false" aria-controls="pyfea-collapse">PyFEA</a>
+				
+			</div>
+		   
+            <div class="collapse" id="pyfea-collapse">
+				<hr>
+				
+				<iframe src="https://pyfea.cfoyer.com/" style="width: 100%; height: 80vh;"></iframe>
+				
+			</div>
+			
+			<hr>
+		   
+			<div class="col-lg-8">
+                <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#tatasteel-collapse" role="button" aria-expanded="false" aria-controls="tatasteel-collapse">Tata Steel Heat Transfer project</a>
+			</div>
+		   
+            <div class="collapse" id="tatasteel-collapse">
+				<hr>
+				<p>Project report:</p>
+				
+				<div id="tata_doc"></div> <!-- had to delay pdf loading otherwise instgram does weird stuff-->
+                <hr>
+                <p>Post-internship video:</p>
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-RiEDUOqW_A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			
+        </div>
+		
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- General Video Modal -->
+	<div class="modal fade" id="vidModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+			    <div class="modal-body">
+
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					</button>
+					<!-- 16:9 aspect ratio -->
+					<div class="embed-responsive embed-responsive-16by9">
+					    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+					</div>
+		
+			    </div>
+
+			</div>
+	    </div>
+	</div> 
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
@@ -271,6 +345,14 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/grayscale.min.js"></script>
+  
+  <!-- Scripts -->
+  <script>
+	// Javascript
+	$(window).bind("load", function() {
+	  $('#tata_doc').prepend('<iframe id="tata-iframe" src="https://resume.cfoyer.com/files/documents/Tata%20Steel%20Heat%20Model%20Report%20-%20Christophe%20Foyer.pdf" style="width: 100%; height: 80vh;"></iframe>');
+	});
+  </script>
 
 </body>
 
